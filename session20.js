@@ -185,6 +185,75 @@ console.dir(btn);
 btn.onclick = function () {
   // if (b.style.color !== "pink") {b.style.color = "pink"
   // }else{b.style.color = ""}
-  if (b.style.display !== "none"){b.style.display = "none"}
-  else{b.style.display = "block"}
+  if (b.style.display !== "none") {
+    b.style.display = "none";
+  } else {
+    b.style.display = "block";
+  }
 };
+const inputHTML = document.getElementById("input-name");
+const buttonHTML = document.getElementById("button-submit");
+const listHTML = document.getElementById("list-todo");
+
+const todoList = [];
+
+function render() {
+  let stringHTML = "";
+
+  for (let i in todoList) {
+    stringHTML += `
+            <li>
+                <span style="width: 200px; display: inline-block;">${todoList[i]}</span>
+                <button onclick="removeTodo(${i})">Remove</button>
+            </li>
+        `;
+  }
+
+  listHTML.innerHTML = stringHTML;
+}
+render();
+
+function addTodo() {
+  const todo = inputHTML.value;
+  todoList.push(todo);
+  inputHTML.value = "";
+  render();
+}
+
+function removeTodo(index) {
+  todoList.splice(index, 1);
+  render();
+}
+inputHTML = document.getElementById("input-name");
+buttonHTML = document.getElementById("button-submit");
+listHTML = document.getElementById("list-todo");
+
+const todoList2 = [];
+
+function render() {
+  let stringHTML = "";
+
+  for (let i in todoList) {
+    stringHTML += `
+            <li>
+                <span style="width: 200px; display: inline-block;">${todoList2[i]}</span>
+                <button onclick="removeTodo(${i})">Remove</button>
+            </li>
+        `;
+  }
+
+  listHTML.innerHTML = stringHTML;
+}
+render();
+
+function addTodo() {
+  const todo = inputHTML.value;
+  todoList.push(todo);
+  inputHTML.value = "";
+  render();
+}
+
+function removeTodo(index) {
+  todoList.splice(index, 1);
+  render();
+}
